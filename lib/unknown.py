@@ -1,6 +1,7 @@
 # lib/validate_unknown.py 
 
-from marshmallow import Schema, fields, post_load, ValidationError 
+from marshmallow import Schema, fields, post_load, ValidationError
+from pprint import pprint
 
 # model
 
@@ -32,4 +33,3 @@ try:
 except ValidationError as err:
     print(err.messages)    # {'is_friendly': ['Unknown field.']}
     print(err.valid_data)  # {'name': 'Snuggles', 'breed': 'Beagle', 'tail_wagging': True}
-    

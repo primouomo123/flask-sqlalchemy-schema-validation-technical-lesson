@@ -1,4 +1,4 @@
-# lib/custom.py 
+# lib/custom.py
 # Custom validation functions and methods
 
 from marshmallow import Schema, fields, validates, ValidationError, post_load
@@ -10,7 +10,7 @@ def validate_toy(toy):
     if not any(t in toy for t in toys):
         raise ValidationError(f"Must include one of: {', '.join(toys)}.")
 
-# model 
+# model
 
 class Cat:
     def __init__(self, name, coat, dob, favorite_toys = []):
@@ -22,7 +22,7 @@ class Cat:
 # schema
 
 class CatSchema(Schema):
-    
+
     @validates("coat")
     def validate_coat( self, value ):
         coat_colorings = ["Tortoiseshell", "Calico", "Tabby", "Black", "Gray", "White", "Tuxedo"]
@@ -33,7 +33,7 @@ class CatSchema(Schema):
     dob = fields.Date(format="%Y-%m-%d")
     coat = fields.Str()
     favorite_toys = fields.List(fields.Str(validate=validate_toy))
-      
+
     @post_load
     def make_cat(self, data, **kwargs):
         return Cat(**data)

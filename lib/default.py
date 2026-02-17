@@ -1,4 +1,4 @@
-# lib/default.py 
+# lib/default.py
 
 from marshmallow import Schema, fields
 from datetime import datetime
@@ -14,6 +14,3 @@ pprint( OwnerSchema().load({}))
 
 pprint(OwnerSchema().dump({}))
 # {'birthdate': '2017-09-29T00:00:00'}
-
-
-
